@@ -4,8 +4,7 @@
 
 
 
-int main()
-{
+int main() {
   BT::BehaviorTreeFactory factory;
 
   
@@ -21,7 +20,7 @@ int main()
   // The tree is written in a specific XML format.
 
 
-  auto tree = factory.createTreeFromFile(package_path+"/configs/my_tree.xml");
+  auto tree = factory.createTreeFromFile(package_path+"/configs/blackboard_tree.xml");
   BT::StdCoutLogger logger_cout(tree);
   tree.tickRootWhileRunning();
 

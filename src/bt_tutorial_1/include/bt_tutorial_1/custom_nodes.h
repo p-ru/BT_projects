@@ -1,7 +1,7 @@
 #pragma once
 #include <behaviortree_cpp_v3/bt_factory.h>
 #include <behaviortree_cpp_v3/loggers/bt_cout_logger.h> 
-
+#include <fmt/core.h>
 class ApproachObject : public BT::SyncActionNode
 {
 public:
@@ -80,11 +80,44 @@ public:
 
 
 
-class SaySomething : public BT::SyncActionNode
-{
+class SaySomething : public BT::SyncActionNode {
   public:
   SaySomething(const std::string& name, const BT::NodeConfiguration& config)
     : BT::SyncActionNode(name, config) {}
+  
+  static BT::PortsList providedPorts() {
+    return { BT::InputPort<std::string>("message") };
+  }
+  
+  BT::NodeStatus tick() override {
+    BT::Optional<std::string> msg = TreeNode::getInput<std::string>("message");
+    if (!msg) {
+      throw BT::RuntimeError("missing required input [message]: ", msg.error());
+    }
+  std::string myString = fmt::format("Robot says: {}", msg.value());
+  std::cout << myString << std::endl;
+  return BT::NodeStatus::SUCCESS;
+  }
+};
+
+class ThinkWhatToSay : public BT::SyncActionNode {
+public:
+  ThinkWhatToSay(const std::string& name, const BT::NodeConfiguration& config)
+    : SyncActionNode(name, config)
+  { }
+
+  static BT::PortsList providedPorts()
+  {
+    return { BT::OutputPort<std::string>("text") };
+  }
+
+  // This Action writes a value into the port "text"
+  BT::NodeStatus tick() override
+  {
+    // the output may change at each tick(). Here we keep it simple.
+    TreeNode::setOutput("text", "The answer is 42" );
+    return BT::NodeStatus::SUCCESS;
+  }
 };
 
 

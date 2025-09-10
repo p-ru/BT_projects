@@ -8,7 +8,7 @@
             "name": "(gdb) Launch my_tree",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/devel/lib/bt_tutorial_1/my_tree",
+            "program": "${workspaceFolder}/devel/lib/bt_tutorial_1/blackboard_tree",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

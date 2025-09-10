@@ -139,6 +139,9 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/bt_tutorial_1_node.cpp)
 add_executable(my_tree src/my_tree.cpp)
+add_executable(blackboard_tree src/blackboard_tree.cpp)
+
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -154,6 +157,11 @@ add_executable(my_tree src/my_tree.cpp)
 #   ${catkin_LIBRARIES}
 # )
 target_link_libraries(my_tree
+  ${catkin_LIBRARIES}
+  fmt::fmt
+)
+
+target_link_libraries(blackboard_tree
   ${catkin_LIBRARIES}
   fmt::fmt
 )
