@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(bt_tutorial_1)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ## Compile as C++11, supported in ROS Kinetic and newer
@@ -156,6 +156,8 @@ add_executable(blackboard_tree src/blackboard_tree.cpp)
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+
 target_link_libraries(my_tree
   ${catkin_LIBRARIES}
   fmt::fmt
