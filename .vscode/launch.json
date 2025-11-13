@@ -8,7 +8,7 @@
             "name": "(gdb) Launch my_tree",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/devel/lib/bt_tutorial_1/blackboard_tree",
+            "program": "${workspaceFolder}/devel/lib/behaviortree_ros/waypoint_bt_node",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

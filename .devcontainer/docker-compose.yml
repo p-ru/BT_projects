@@ -1,0 +1,27 @@
+services:
+  ros-dev:
+    container_name: ros-noetic-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME: matt
+        USER_UID: 1000
+    image: matt/ros-noetic:latest
+    command: sleep infinity
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_AUTO_SCREEN_SCALE_FACTOR=1
+    volumes:
+      - ..:/workspace:cached
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    devices:
+      - /dev/dri:/dev/dri
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
