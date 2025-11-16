@@ -2,7 +2,7 @@ services:
   ros-dev:
     container_name: ros-noetic-dev
     build:
-      context: .
+      context: . 
       dockerfile: Dockerfile
       args:
         USERNAME: matt
@@ -14,7 +14,14 @@ services:
       - DISPLAY=${DISPLAY}
       - QT_AUTO_SCREEN_SCALE_FACTOR=1
     volumes:
-      - ..:/workspace:cached
+      # Mount BT_projects to /workspaces/BT_projects
+      - /home/matt/BT_projects:/workspaces/BT_projects:cached
+      
+      # Mount tagslam_ros2_root to /workspaces/tagslam_ros2_root
+      - /home/matt/tagslam_ros2_root:/workspaces/tagslam_ros2_root:cached
+      
+
+      #- ..:/workspaces:cached
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     devices:
       - /dev/dri:/dev/dri

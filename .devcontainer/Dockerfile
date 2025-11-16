@@ -1,4 +1,4 @@
-FROM ros:noetic
+FROM osrf/ros:noetic-desktop-full
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -17,7 +17,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libfmt-dev \
-    git \
+    #git \
     ros-noetic-behaviortree-cpp-v3 \
     qtbase5-dev libqt5svg5-dev libzmq3-dev libdw-dev \
     ros-noetic-rqt \
@@ -26,12 +26,24 @@ RUN apt-get update && apt-get install -y \
     ros-noetic-image-transport-plugins \
     ros-noetic-rosbridge-suite \
     ros-noetic-web-video-server \
+    ros-noetic-image-geometry \
+    software-properties-common \
+    python3-vcstool \
+    python3-osrf-pycommon 
 
+RUN sudo apt-add-repository ppa:borglab/gtsam-release-4.1 \
+    && apt-get update && apt-get install -y \
+    libgtsam-dev libgtsam-unstable-dev \
+    python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
+
 
 # Configure ROS environment for user
 USER $USERNAME
 RUN echo 'source /opt/ros/noetic/setup.bash' >> ~/.bashrc \
-    && echo '[ -f /workspace/devel/setup.bash ] && source /workspace/devel/setup.bash' >> ~/.bashrc
+    && echo '# Conditionally source workspaces' >> ~/.bashrc \
+    && echo '[ -f /workspaces/BT_projects/devel/setup.bash ] && source /workspaces/BT_projects/devel/setup.bash' >> ~/.bashrc \
+    && echo '[ -f /workspaces/tagslam_ros2_root/devel/setup.bash ] && source /workspaces/tagslam_ros2_root/devel/setup.bash' >> ~/.bashrc
 
-WORKDIR /workspace
+
+WORKDIR /workspaces

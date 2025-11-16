@@ -1,15 +1,19 @@
 {
     "name": "ROS noetic",
+    //"image": "osrf/ros:noetic-desktop-full",
     
+
     "dockerComposeFile": "docker-compose.yml",
     "service": "ros-dev",
-    "workspaceFolder": "/workspace",
+    "workspaceFolder": "/workspaces",
     
     "remoteUser": "matt",
-    
-    "postStartCommand": "sudo chown -R matt:matt /workspace",
-    "postCreateCommand": "rosdep update && rosdep install --from-paths src --ignore-src -r -y",
+    "overrideCommand": false,
+    "postStartCommand": "sudo chown -R matt:matt /workspaces",
+    "postCreateCommand": "echo 'Container ready. Run rosdep manually if needed.'",
+    "shutdownAction": "stopCompose",
 
+    
 
     "customizations": {
         "settings": {
