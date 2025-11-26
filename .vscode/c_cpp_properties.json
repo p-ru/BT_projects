@@ -4,18 +4,16 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/ros/noetic/include/**",
                 "${workspaceFolder}/src/behaviortree_ros/include",
-                "/opt/ros/noetic/include"
+                "/workspaces/tagslam_ros2_root/devel/include",
+                "/opt/ros/noetic/include",
+                "${workspaceFolder}/devel/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
             "cppStandard": "gnu++17",
-            "intelliSenseMode": "linux-gcc-x64",
-            "compileCommands": [
-                "${workspaceFolder}/build/compile_commands.json"
-            ]
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4

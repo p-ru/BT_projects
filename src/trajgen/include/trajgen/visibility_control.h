@@ -28,5 +28,5 @@
   #define TRAJGEN_PUBLIC_TYPE
 #endif
 #endif  // TRAJGEN__VISIBILITY_CONTROL_H_
-// Generated 16-Nov-2025 22:33:19
+// Generated 24-Nov-2025 01:30:29
 // Copyright 2019-2020 The MathWorks, Inc.

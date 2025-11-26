@@ -19,6 +19,9 @@ services:
       
       # Mount tagslam_ros2_root to /workspaces/tagslam_ros2_root
       - /home/matt/tagslam_ros2_root:/workspaces/tagslam_ros2_root:cached
+
+      # Mount getting-started-threejs to /workspaces/getting-started-threejs
+      - /home/matt/getting-started-threejs:/workspaces/getting-started-threejs:cached
       
 
       #- ..:/workspaces:cached

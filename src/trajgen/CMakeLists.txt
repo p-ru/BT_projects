@@ -106,16 +106,12 @@ target_include_directories(trajGen PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 ## Specify libraries to link a library or executable target against
-
-
-
 target_link_libraries(
   trajGen 
-    ##"/usr/local/MATLAB/R2024b/sys/os/glnxa64/orig/libstdc++.so.6"
+    # "/usr/local/MATLAB/R2024b/sys/os/glnxa64/orig/libstdc++.so.6"
     ${catkin_LIBRARIES}
     ${Boost_LIBRARIES}
     ${CMAKE_DL_LIBS}
-    stdc++
 )
 install(TARGETS trajGen
   EXPORT export_${PROJECT_NAME}
@@ -134,4 +130,4 @@ add_custom_command(
                    ARGS -E copy ${PROJECT_SOURCE_DIR}/src/${file_i} ${CATKIN_DEVEL_PREFIX}/trajGen_ert_rtw/${file_i}
 				   )
 endforeach(file_i)
-# Generated on Sun Nov 16 22:33:19 2025
+# Generated on Mon Nov 24 01:30:29 2025
